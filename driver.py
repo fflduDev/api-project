@@ -3,6 +3,8 @@ from projectInit import *
 # TODO - add a menu & process loop to enable the user to select 
 # which one of the test API's they want to try
 
+# kilroy was here 
+
 
 def main():
     satelliteTest()
