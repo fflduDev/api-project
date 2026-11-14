@@ -18,3 +18,7 @@ Remaining: 9996
 - Built the request string, inspected
 - Made the API call: requested and received raw data.  displayed
 ===
+
+
+11.14
+- added baseline explore.py
