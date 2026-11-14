@@ -1,27 +1,24 @@
 import requests
 from config import API_KEY
 
-OPTIONS = [
-"Number of characters",
-"List of character names",
-"Tallest character",
-"Characters taller than a height you choose",
-"Search for a character by name",
-]
+ 
 def show_menu():
-    print()
-    print("===== Star Wars Explorer =====")
-    for number, option in enumerate(OPTIONS, start=1):
-        print(f"{number}. {option}")
-        print("0. Quit")
+    print ("------------------------------")
+    print ("To see full list of Astroids, press 1 ")
+    print ("To see if there are any Dangerous Asteroids, press 2 ")
+    print ("To get closest miss distance, press 4 ")
+    print ("To get detail for another date, press 3 ")
+    print ("To exit press 9 ")
 
+    
 def get_choice():
     """Ask until the user enters a valid option number; return it as an int."""
     while True:
-        text = input("Choose an option: ").strip()
-        if text.isdigit() and int(text) <= len(OPTIONS):
-            return int(text)
-        print(f"Please enter a number from 0 to {len(OPTIONS)}.")
+        show_menu()
+        selection = int(input("Choose an option: "))
+        #TODO: do some validation
+        return int(selection)
+       
 
 def pause():
     input("\nPress Enter to return to the menu...")
@@ -44,6 +41,7 @@ def main():
     while True:
         show_menu()
         choice = get_choice()
+        print("user choice: ", choice)
 
 
 if __name__ == "__main__":
