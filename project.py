@@ -44,8 +44,11 @@ def confirm_quit():
 def buildAPIString():
     #use API_KEY from config file
     print("Do we have an API KEY: ", API_KEY)
-    strAPI = "https://api.nasa.gov/neo/rest/v1/feed?start_date=" + "2000-01-01" + "&end_date=" + "2000-01-01" + "&api_key=" + API_KEY
-    
+    #strAPI = "https://api.nasa.gov/neo/rest/v1/feed?start_date=" + "2000-01-01" + "&end_date=" + "2000-01-01" + "&api_key=" + API_KEY
+    strAPI = "https://science.nasa.gov/wp-json/wp/v2/apod-basic"
+
+
+        
     print("Our API Request string looks like: ", strAPI)
 
     return strAPI
@@ -55,7 +58,16 @@ def look_at_raw_data():
     response = requests.get(buildAPIString())
     json_data = json.loads(response.text)
     return json_data
- 
+
+def exploreRawData(rawData):
+    for thing in rawData:
+        print("thing; ", thing)
+        print("\n")
+        print("keys in thing: ", thing.keys())
+        print(" values for each key in thing: ")
+        for key in thing.keys():
+            print("current key/value pair: KEY", key, " VALUE: ", thing.get(key))
+            print("\n")
 
 def main():
 
@@ -65,7 +77,13 @@ def main():
         print("user choice: ", choice)
         if choice == 99:
             rawData = look_at_raw_data()
-            print("rawData: ", rawData)
+            exploreRawData(rawData)
+
+            
+
+
+
+
         else:
             print("later..")
             exit()
